@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.day30.dao.BankDao">
+    <select id="selectBanks" resultType="com.day30.domain.Bank">
+        select id, name, balance
+        from bank
+        order by id desc
+    </select>
+    <insert id="insertBank">
+        insert into bank(name ,balance)values(#{name},#{balance})
+    </insert>
+
+    <delete id="deleteBank">
+        delete
+        from bank
+        where id = #{id}
+    </delete>
+
+    <update id="updateBank" parameterType="com.day30.domain.Bank">
+        update bank
+        set name=#{name},
+            balance=#{balance}
+        where id = #{id}
+    </update>
+
+</mapper>
